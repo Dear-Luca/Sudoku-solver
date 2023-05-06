@@ -6,11 +6,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-extern int UNSOLVED; //variable declared in sudoku.c
-// each boxi is a square 3x3 of the sudoku
-typedef struct Box {
+extern int UNSOLVED;  // variable declared in sudoku.c
 
+
+// each box is a square 3x3 of the sudoku
+typedef struct Box {
+     struct Box * next;
 } Box;
+
 // each square is a nuber of the sudoku
 typedef struct Square {
     int number;  // number stored into the cell
@@ -28,8 +31,14 @@ typedef struct Square {
 
 } Square;
 
-Square ***setUpPuzzle(int **puzzle);
-int **createPuzzle();
-void printPuzzle();
+int ** createPuzzle();
+void printPuzzle(Square *** puzzle);
+Square *** setUpPuzzle(int ** puzzle);
+
+int updateSudoku(Square *** sudoku, int row, int column);
+int checkPuzzle(Square *** sudoku);
+
+int solveSquare(Square * square);
+
 
 #endif

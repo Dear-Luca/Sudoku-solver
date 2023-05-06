@@ -1,12 +1,29 @@
-#include "sudoku.h"
+#include "../include/sudoku.h"
 
-int UNSOLVED = ROWS*COLS; //81 (9x9) unsolved squares
+int UNSOLVED = ROWS * COLS;  // 81 (9x9) unsolved squares
+
 
 int main() {
+    system("clear");
     int** puzzle;
-    Square*** sudoku;  // main variable that rapresents the sudoku
+    Square*** sudoku;
+    int i;
     puzzle = createPuzzle();
-    printPuzzle(puzzle);
-    setUpPuzzle(puzzle);
+
+    sudoku = setUpPuzzle(puzzle);
+
+    printPuzzle(sudoku);
+
+    checkPuzzle(sudoku);
+
+    printf("\n");
+    for(i = 0; i<30; i++){
+        printf("~");
+    }
+    printf("\n\n");
+    
+
+    printPuzzle(sudoku);
+
     return 0;
 }
